@@ -1,0 +1,206 @@
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	-moz-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+#app,
+body {
+	background-color: var(--body-backgroundColor);
+	color: var(--body-textColor);
+	font-family: var(--primary-font);
+	font-size: var(--font-base);
+	font-weight: var(--var-font-weight-regular);
+	line-height: var(--line-height-base);
+}
+
+* {
+	-webkit-tap-highlight-color: transparent;
+
+	::selection {
+		background: var(--var-color-primaryDarker);
+		color: var(--var-color-neutralWhite);
+		text-shadow: none;
+	}
+}
+
+strong {
+	font-weight: var(--var-font-weight-bold);
+}
+
+em {
+	font-style: italic;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none !important;
+	}
+
+	@include on-event {
+		color: var(--var-text-color);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+blockquote,
+figure {
+	margin: 0;
+}
+
+blockquote {
+	.quote {
+		quotes: '“' '”' '‘' '’';
+
+		&::before {
+			content: open-quote;
+		}
+
+		&::after {
+			content: close-quote;
+		}
+	}
+}
+
+table {
+	padding: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	display: grid;
+	place-items: center;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+
+	.wrapper {
+		position: relative;
+		max-width: calc(38.6875rem + 2.5rem);
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: var(--var-spacing-m);
+		padding-right: var(--var-spacing-m);
+		width: 100%;
+	}
+}
+
+h1 {
+	font-size: var(--var-font-mobile-xl);
+	line-height: var(--var-line-height-heading-big);
+	font-weight: var(--var-font-weight-black);
+}
+
+h2 {
+	font-size: var(--var-font-mobile-l);
+	line-height: var(--var-line-height-heading-big);
+	font-weight: var(--var-font-weight-black);
+}
+
+h3 {
+	font-size: var(--var-font-mobile-m);
+	line-height: var(--var-line-height-regular);
+	font-weight: var(--var-font-weight-semiBold);
+}
+
+h4 {
+	font-size: var(--var-font-mobile-s);
+	line-height: var(--var-line-height-heading-small);
+}
+
+h5 {
+	font-size: var(--var-font-mobile-xs);
+	line-height: var(--var-line-height-heading-small);
+}
+
+h6 {
+	font-size: var(--var-font-mobile-2xs);
+	font-weight: var(--var-font-weight-light);
+	line-height: var(--var-line-height-heading-small);
+}
+
+p {
+	font-size: var(--var-font-mobile-m);
+	font-weight: var(--var-font-weight-regular);
+	line-height: var(--var-line-height-regular);
+}
+
+@media (min-width: 768px) {
+	body {
+		font-size: var(--font-desktop-base);
+	}
+
+	h1 {
+		font-size: var(--var-font-desktop-xl);
+	}
+
+	h2 {
+		font-size: var(--var-font-desktop-l);
+	}
+
+	h3 {
+		font-size: var(--var-font-desktop-m);
+	}
+
+	h4 {
+		font-size: var(--var-font-desktop-s);
+	}
+
+	h5 {
+		font-size: var(--var-font-desktop-xs);
+	}
+
+	h6 {
+		font-size: var(--var-font-desktop-2xs);
+	}
+
+	p {
+		font-size: var(--var-font-desktop-m);
+	}
+}

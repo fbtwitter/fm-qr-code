@@ -1,0 +1,50 @@
+main {
+	display: grid;
+	place-items: center;
+
+	min-height: 100vh;
+}
+
+.card {
+	max-width: 320px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--var-color-neutralWhite);
+	border-radius: 20px;
+
+	@include padding-horizontal(16px);
+	@include padding-vertical(18px);
+
+	figure {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		img {
+			border-radius: 10px;
+		}
+
+		figcaption {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 24px;
+			padding: 8px;
+
+			text-align: center;
+
+			h1 {
+				font-size: 1.375rem;
+				font-weight: 700;
+			}
+
+			p {
+				margin-top: 12px;
+				font-size: 1rem;
+				font-weight: 400;
+				color: var(--var-color-primaryLighter);
+			}
+		}
+	}
+}

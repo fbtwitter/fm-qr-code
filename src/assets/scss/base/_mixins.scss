@@ -1,0 +1,128 @@
+// Event wrapper
+@mixin on-event($self: false) {
+	@if $self {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	}
+}
+
+// - - Breakpoints
+// Mobile
+@mixin mobile($max-min: max) {
+	@if ($max-min == 'max') {
+		@media only screen and (max-width: 320px) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: 320px) {
+			@content;
+		}
+	}
+}
+
+// Tablets
+@mixin tablet($max-min: max) {
+	@if ($max-min == 'max') {
+		@media only screen and (max-width: 768px) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: 768px) {
+			@content;
+		}
+	}
+}
+
+// Desktop
+@mixin desktop($max-min: max) {
+	@if ($max-min == 'max') {
+		@media only screen and (max-width: 1024px) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: 1024px) {
+			@content;
+		}
+	}
+}
+
+// Vendor
+@mixin vendor($property, $value...) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+
+// Animation
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+@mixin container($default: 71rem) {
+	max-width: calc($default + 3rem); /* 1 */
+	margin-left: auto; /* 2 */
+	margin-right: auto; /* 2 */
+	padding-left: 1.5rem; /* 3 */
+	padding-right: 1.5rem; /* 3 */
+	width: 100%; /* 1 */
+}
+
+// - - Transition
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+// - - Padding
+@mixin padding-horizontal($size) {
+	padding-left: $size;
+	padding-right: $size;
+}
+@mixin padding-vertical($size) {
+	padding-top: $size;
+	padding-bottom: $size;
+}
+// - - Margin
+@mixin margin-horizontal($size) {
+	margin-left: $size;
+	margin-right: $size;
+}
+@mixin margin-vertical($size) {
+	margin-top: $size;
+	margin-bottom: $size;
+}
